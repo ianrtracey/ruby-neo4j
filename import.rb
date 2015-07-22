@@ -8,7 +8,7 @@ require 'csv'
 #set :port, 80 if Sinatra::Base.environment == 'production'
 
 
-session = Neo4j::Session.open(:server_db, 'http://localhost:7474/')
+session = Neo4j::Session.open(:server_db, 'http://localhost:7474/', { basic_auth: { username: 'neo4j', password: 'Filly901secure'} })
 
 class Person
   include Neo4j::ActiveNode
@@ -103,7 +103,4 @@ hashed_data.each do |reg|
 	  				resume: reg[:resume], diet: reg[:diet], diet_description: reg[:diet_description])
 end
 
-
-rajprateek@gatech.edu
-dbresnick@email.arizona.edu
 
