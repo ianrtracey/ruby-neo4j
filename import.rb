@@ -67,19 +67,19 @@ hashed_data.each do |reg|
 	  	gender = "Not Associated"
 	  end
 	  if reg[:is_az_student].to_i == 1
-	  	is_az_student = true
+	  	is_az_student = 'true'
 	  else
-	  	is_az_student = false
+	  	is_az_student = 'false'
 	  end
 	  if reg[:is_hs_student].to_i == 1
-	  	is_hs_student = true
+	  	is_hs_student = 'true'
 	  else
-	  	is_hs_student = false
+	  	is_hs_student = 'false'
 	  end
 	  if reg[:first_hackathon].to_i == 1
-	  	first_hackathon = true
+	  	first_hackathon = 'true'
 	  else
-	  	first_hackathon = false
+	  	first_hackathon = 'false'
 	  end
 	  if reg[:github] == "http://"
 	    github = ""
@@ -91,15 +91,15 @@ hashed_data.each do |reg|
 	  	linkedin = ""
 	  end
 	  Person.create(name: reg[:name], email: reg[:email],gender: gender,
-	  				is_az_student: reg[:is_az_student], is_hs_student: reg[:is_hs_student],
+	  				is_az_student: is_az_student, is_hs_student: is_hs_student,
 	  				is_18_years_old: reg[:is_18_years_old], school: reg[:school],
-	  				needs_travel: reg[:needs_travel], first_hackathon: reg[:first_hackathon],
+	  				needs_travel: reg[:needs_travel], first_hackathon: first_hackathon,
 	  				experience: reg[:experience], hardware: reg[:hardware], software: reg[:software],
 	  				virtual_reality: reg[:vr], wearables: reg[:wearables],
 	  				health: reg[:health], sustainability: reg[:sustainability], drone_or_robotics: reg[:drone_or_robotics],
 	  				printing: reg[:printing], web: reg[:web], ios: reg[:ios], android: reg[:android],
 	  				other: reg[:other], projects: reg[:projects], why_hack_arizona: reg[:why_hack_arizona],
-	  				github: reg[:github], linkedin: reg[:linkedin], website: reg[:website],
+	  				github: github, linkedin: linkedin, website: website,
 	  				resume: reg[:resume], diet: reg[:diet], diet_description: reg[:diet_description])
 end
 
